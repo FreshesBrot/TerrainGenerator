@@ -15,7 +15,7 @@ private:
 	//the terrain map
 	std::vector<std::vector<int>> map;
 	//size of the map
-	int size;
+	int resolution;
 
 	//the index-resolution of the map after calculation
 	float cropResolution;

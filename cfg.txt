@@ -1,2 +1,4 @@
-res = 512
-cropRes = 0.5
+res 
+512
+cropRes 
+0.5
