@@ -1,4 +1,14 @@
-res 
-512
-cropRes 
+res
+1024
+cropRes
 0.5
+fallOff
+1.0
+smoothing
+25
+outDir
+out/
+mapName
+heightField.png
+nMapName
+NormalMap.png
