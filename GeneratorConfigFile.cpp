@@ -86,6 +86,7 @@ void GeneratorConfigFile::ProcessFile() {
 			newLine = nextLine();
 			std::istringstream iss(newLine);
 			iss >> iterations;
+			if (iterations < 1) iterations = 1;
 			break;
 		}
 		default: break;

@@ -1,11 +1,11 @@
 res
-1024
+2048
 cropRes
 0.5
 fallOff
-1.0
+0.8
 smoothing
-25
+10
 outDir
 out/
 mapName
