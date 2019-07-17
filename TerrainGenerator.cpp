@@ -1,7 +1,9 @@
 #include <iostream>
 #include "PNGImage.h"
 #include "Generator.h"
+#include "MeshMaker.h"
 #define IDX(x,y) ((x)+(y)*(res+1))
+
 
 int main() {
 	try {
@@ -34,9 +36,18 @@ int main() {
 		heightImage.saveImage(cfg.getMapFileName());
 
 		std::cout << "Done!\n";
+		
+		//generating the meshfile
+		std::cout << "Generating Meshfile...\n";
+		MeshMaker maker("out/Terrain.sof");
+		maker.MakeGeometry(heightImage);
+		maker.CreateMeshFile();
+
+		std::cout << "Done!\n";
 		system("pause");
 		return 0;
 	}
+
 	catch (std::runtime_error& e) {
 		std::cout << e.what() << "\n";
 		return 1;

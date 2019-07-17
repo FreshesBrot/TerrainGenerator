@@ -64,7 +64,8 @@ RGBByte PNGImage::getGrayPixel(int x, int y) const {
 }
 
 float PNGImage::getGrayPixelfloat(int x, int y) const {
-	return image.get_pixel(x,y).red / RGBBYTE_SIZE;
+	png::rgb_pixel px = image.get_pixel(x, y);
+	return px.red / float(RGBBYTE_SIZE);
 }
 
 void PNGImage::saveImage() {

@@ -154,6 +154,7 @@
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="GeneratorConfigFile.cpp" />
+    <ClCompile Include="MeshMaker.cpp" />
     <ClCompile Include="PNGImage.cpp" />
     <ClCompile Include="TerrainGenerator.cpp" />
   </ItemGroup>
@@ -161,6 +162,7 @@
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="Generator.h" />
     <ClInclude Include="GeneratorConfigFile.h" />
+    <ClInclude Include="MeshMaker.h" />
     <ClInclude Include="PNGImage.h" />
   </ItemGroup>
   <ItemGroup>
