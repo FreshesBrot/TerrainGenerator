@@ -1,5 +1,6 @@
 #pragma once
 #include "FileReader.h"
+#pragma region SETTINGS
 #define RES 330
 #define CROPRES 734
 #define FALLOFF 698
@@ -7,6 +8,8 @@
 #define MAPNAME 703
 #define NMAPNAME 781
 #define SMOOTH 984
+#define SIGMA 529
+#pragma endregion
 
 //this class represents a configuration file for the terraingenerator
 class GeneratorConfigFile : public FileReader {
@@ -20,6 +23,7 @@ public:
 	float getCropResolution();
 	float getFallOff();
 	int getIterations();
+	float getSigma();
 
 	//retrieve information about the storage
 	std::string getMapFileName();
@@ -36,6 +40,7 @@ private:
 	float cropResolution;
 	float fallOff;
 	int iterations;
+	float sigma;
 
 	//storage information
 	std::string dir;

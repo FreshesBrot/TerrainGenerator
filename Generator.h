@@ -3,6 +3,8 @@
 #include <random>
 #include "GeneratorConfigFile.h"
 #include <chrono>
+#define IDX(x,y) ((x)+(y)*(resolution+1))
+#define ARRAYMAX (resolution+1)
 
 //a normal-struct
 struct Normal {
@@ -23,12 +25,13 @@ public:
 	//smooths the heightfield and returns it
 	void smoothHeightField(int iterations);
 	//retrieves the stored height map
-	float** getHeightField();
+	float* getHeightField();
 
 	//generates the normal map and retrieves it
 	void generateNormalMap();
 	//retrieves normal map
-	Normal** getNormalMap();
+	Normal* getNormalMap();
+
 
 private:
 
@@ -43,9 +46,9 @@ private:
 	float uniformFloat();
 
 	//the terrain map
-	float** map;
+	float* map;
 	//the normal map
-	Normal** nMap;
+	Normal* nMap;
 
 	//size of the map
 	int resolution;
@@ -68,13 +71,14 @@ private:
 	void smooth();
 	void smooth(int iterations);
 
-	//checks if the index is out of bound
+	//checks if the given index is out of bound
 	bool isInBounds(int x, int y);
 
-	//returns the value at map point (x,y)
-	float get(int x, int y);
 	//sets the value at map point (x,y)
 	void set(int x, int y, float val);
+	//returns the value at map point (x,y)
+	float get(int x, int y);
+	
 	//clamps the value between 0 and 1
 	float clamp(float val);
 

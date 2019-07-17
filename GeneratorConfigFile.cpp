@@ -3,6 +3,7 @@
 GeneratorConfigFile::GeneratorConfigFile(const wchar_t* fileName) : FileReader::FileReader(fileName) {
 	resolution = 0;
 	cropResolution = 0;
+	sigma = 0;
 	dir = "";
 	mapFileName = "";
 	nMapFileName = "";
@@ -28,6 +29,10 @@ int GeneratorConfigFile::getIterations() {
 	return iterations;
 }
 
+float GeneratorConfigFile::getSigma() {
+	return sigma;
+}
+
 std::string GeneratorConfigFile::getMapFileName() {
 	return std::string(dir+mapFileName);
 }
@@ -50,6 +55,7 @@ void GeneratorConfigFile::ProcessFile() {
 			newLine = nextLine();
 			std::istringstream iss(newLine);
 			iss >> resolution;
+			if (resolution <= 0) resolution = 512;
 			break;
 		}
 		case CROPRES:
@@ -57,6 +63,7 @@ void GeneratorConfigFile::ProcessFile() {
 			newLine = nextLine();
 			std::istringstream iss(newLine);
 			iss >> cropResolution;
+			if (cropResolution <= 0 || cropResolution >= 1) cropResolution = 0.5;
 			break;
 		}
 		case FALLOFF: 
@@ -65,6 +72,7 @@ void GeneratorConfigFile::ProcessFile() {
 			std::istringstream iss(newLine);
 			iss >> fallOff;
 			break;
+			if (fallOff > 1 || fallOff < 0) fallOff = 0.8;
 		}
 		case DIR:
 		{
@@ -88,6 +96,13 @@ void GeneratorConfigFile::ProcessFile() {
 			iss >> iterations;
 			if (iterations < 1) iterations = 1;
 			break;
+		}
+		case SIGMA:
+		{
+			newLine = nextLine();
+			std::istringstream iss(newLine);
+			iss >> sigma;
+			if (sigma <= 0) sigma = 0.5;
 		}
 		default: break;
 		}

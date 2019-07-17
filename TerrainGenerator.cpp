@@ -1,15 +1,7 @@
 #include <iostream>
 #include "PNGImage.h"
 #include "Generator.h"
-
-void printArray2D(float** arr, int size) {
-	for (int y = 0; y < size; y++) {
-		for (int x = 0; x < size; x++) {
-			std::cout << arr[y][x] << " ";
-		}
-		std::cout << "\n";
-	}
-}
+#define IDX(x,y) ((x)+(y)*(res+1))
 
 int main() {
 	try {
@@ -25,24 +17,23 @@ int main() {
 		g.generateHeightField();
 
 		//smoothing the heighfield
-		std::cout << "Smoothing HeightField "<<smoothIterations<<" times...\n";
+		std::cout << "Smoothing HeightField "<< smoothIterations <<" times...\n";
 		g.smoothHeightField(smoothIterations);
-
-		float** heightMap = g.getHeightField();
+		std::cout << "Finished Generation.\n";
+		float* map = g.getHeightField();
 
 		//transform it into an image
 		std::cout << "Saving Image...\n";
 		PNGImage heightImage(res, res);
 		for (int y = 0; y < res; y++) {
 			for (int x = 0; x < res; x++)
-				heightImage.setGrayPixel(x, y, heightMap[y][x]);
+				heightImage.setGrayPixel(x, y, map[IDX(x,y)]
+				);
 		}
 		
-
-		//printArray2D(heightMap, res);
 		heightImage.saveImage(cfg.getMapFileName());
 
-		std::cout << "Finished Generation.\n";
+		std::cout << "Done!\n";
 		system("pause");
 		return 0;
 	}
