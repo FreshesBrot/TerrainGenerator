@@ -1,5 +1,5 @@
 res
-64
+8
 cropRes
 0.5
 fallOff

@@ -5,6 +5,12 @@
 #include <vector>
 #include "PNGImage.h"
 
+/*
+	TODO
+	combine MakeGeometry and CreateMeshFile to increase performance
+
+*/
+
 //this class will create a meshfile in custom format
 class MeshMaker {
 public:
