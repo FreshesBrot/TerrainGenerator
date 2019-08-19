@@ -81,13 +81,13 @@ void MeshMaker::CreateMeshFile() {
 			vertexIterator->y << " " <<
 			vertexIterator->z << " " <<
 			//color
-			vertexIterator->x << " " <<
-			vertexIterator->y << " " <<
-			vertexIterator->z << " " <<
+			"0.0" << " " <<
+			"0.0" << " " <<
+			"0.0" << " " <<
 			//normals
-			vertexIterator->x << " " <<
-			vertexIterator->y << " " <<
-			vertexIterator->z << " " <<
+			"0.0 0.0 -1.0" << " " <<
+			//"0.0 1.0 0.0" << " " <<
+			//"0.0 1.0 0.0" << " " <<
 			//tx coords
 			vertexIterator->tx_u << " " <<
 			vertexIterator->tx_v << " " << "\n";
